@@ -1,0 +1,26 @@
+//-----------------------------
+//  ‘f”‚ğ‹‚ß‚é bb_prime.bbi
+//-----------------------------
+func is_prime(n)        // n‚ª‘f”‚È‚ç^‚ğ•Ô‚·
+    return 0 ? n < 2    // 2–¢–‚Í‘f”‚Å‚È‚¢
+    return 1 ? n == 2   // 2‚Í‘f”‚Å‚ ‚é
+    return 0 ? n%2 == 0 // 2ˆÈŠO‚Ì‹ô”‚Í‘f”‚Å‚È‚¢
+    i=3
+    while i*i <= n
+        if n%i == 0
+            return 0    // Š„‚èØ‚ê‚½‚ç‘f”‚Å‚È‚¢
+        end
+        i = i + 2
+    end
+    return 1            // ‘f”‚Å‚ ‚é
+end
+
+func main()
+    for n=1 to 1000     // 1000ˆÈ‰º‚Ì‘f”‚Í
+        if is_prime(n)
+            print n, " "
+        end
+    end
+    println ""
+end
+

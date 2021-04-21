@@ -38,11 +38,11 @@ int main() {
 	mb['^'] = -6;
 	while(1) {
 		string st;
-		cin>>st;
-		
+		getline(cin, st);
+		/*remove(st.begin(), st.end(), ' ');
+		st.erase(0, st.length());*/
 		st.erase(remove(st.begin(), st.end(), ' '), st.end());
-		st = Turn(st);
-		//cout<<st;
+		st = Turn(st);//cout<<st;
 		Trans(st);
 		/*for(int i = 0; i<1000; i++) {
 			printf("%d ", pri[i]);
@@ -53,9 +53,10 @@ int main() {
 }
 string Turn(string st) {
 	for(int i = 0; i<st.length(); i++) {
-		if(op.find(st[i])==op.end()) continue;
-		if(i!=0)
-		i++;
+		//printf("!!");
+		if(op.find(st[i])==op.end() || st[i]==')') continue;
+		if(i!=0) i++;
+		//printf("\\%d\n", i);
 		while(op.find(st[i])!=op.end()) {
 			char lasterased = st[i];
 			//cout<<"|"<<st[i]<<"|";
@@ -96,9 +97,9 @@ void Trans(string st) {
 				cnt++;
 			}
 			fl = 0;
-			
 		}
 		else {
+			//printf("%d\n", index);
 			if(st[index]=='!') {
 				index++;
 				continue;
@@ -119,11 +120,13 @@ void Trans(string st) {
 					k = vec.back();
 					vec.pop_back();
 				}
+				
 			}
 			else if(st[index]=='(') {
 				vec.push_back(st[index]);
 			}
 			else {
+				//printf("|%d| %d\n", ma[vec.back()], fl);
 				//printf("|%d|\n", ma[vec.back()]);
 				while(ma[vec.back()]>=ma[st[index]]) {
 					pri[cnt] = mb[vec.back()];

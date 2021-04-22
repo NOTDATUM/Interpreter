@@ -2,15 +2,15 @@
 using namespace std;
 ifstream fin;
 vector<int> endfind, parenendfind;
-enum TknKind {
+enum TknKind { // 종류
 	Lparen = 0, Rparen, Plus, Minus, Multiple, Divide = 5,
 	Percent, Exp, Letter, Comma, If = 10,
 	Else, Elif, For, While, Number = 15, 
 	Quot, Semi, Var, Equal, Lmparen = 20,
 	Rmparen, String, Typeint, Typefloat, Typestring=25,
 	Typebool, Others
-};
-struct KeyW {
+}; 
+struct KeyW { 
 	const char *keyName;
 	TknKind keyKind;
 };
@@ -23,8 +23,8 @@ struct Token {
 Token buffer[1000];
 TknKind a[256];
 KeyW Tble[9] = {{"if", If}, {"for", For}, {"while", While}, {"elif", Elif}, {"else", Else},
-{"int", Typeint}, {"float", Typefloat}, {"bool", Typebool}, {"string", Typestring}};
-void initTkn() {
+{"int", Typeint}, {"float", Typefloat}, {"bool", Typebool}, {"string", Typestring}}; // 인식방법(토큰)
+void initTkn() { // 
 	for(int i = 0; i<256; i++) a[i] = Others;
 	for(int i = 'a'; i<='z'; i++) a[i] = Letter;
 	for(int i = 'A'; i<='Z'; i++) a[i] = Letter;
